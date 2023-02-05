@@ -22,8 +22,16 @@ class CharacterCell: UICollectionViewCell {
     
     func configur(character: Character) {
         
-        nameCharacterLabel.text = character.name
-        locationCharaterLabel.text = character.location.nameLocation
+        nameCharacterLabel.text = "Name: \(character.name)"
+        locationCharaterLabel.text = "Location: \(character.location.nameLocation)"
+        NetworkManager.shared.fetchImage(from: character.image) { result in
+            switch result {
+            case .success(let imageData):
+                self.imageCharacter.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        }
 
 }
 }

@@ -44,7 +44,7 @@ extension CharacterCollectionViewController {
         
         let character = characters[indexPath.item]
         
-       // cell.configur(character: character)
+        cell.configur(character: character)
         
         return cell
     }

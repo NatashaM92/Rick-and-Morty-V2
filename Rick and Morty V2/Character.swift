@@ -48,16 +48,17 @@ struct LastLocation: Decodable {
     }
 }
 
-//struct Episode: Decodable {
-//    let name: String
-//    
-//    init(value: [String: Any]) {
-//        name = value["name"] as? String ?? ""
-//    }
-//    
-//    static func getEpisode(from value: Any) -> String {
-//        guard let value = value as? [String: Any] else { return ""}
-//        let episode = Episode(value: value)
-//        return episode
-//    }
-//}
+struct Episode: Decodable {
+    let name: String
+    
+    init(value: [String: Any]) {
+        name = value["name"] as? String ?? ""
+    }
+    
+    static func getEpisode(from value: Any) -> String {
+        guard let value = value as? [String: Any] else { return ""}
+        let episodes = Episode(value: value)
+    
+        }
+    }
+

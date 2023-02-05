@@ -31,31 +31,32 @@ class NetworkManager {
             }
     }
     
-//    func fetchEpisode(url: String, completion: @escaping(Result<Episode, AFError>) -> Void) {
-//        AF.request(url, method: .get)
-//            .validate()
-//            .responseJSON { response in
-//                switch response.result {
-//                case .success(let value):
-//                    let  = Character.getCharacters(from: value)
-//                    completion(.success())
-//                case .failure(let error):
-//                    completion(.failure(error))
-//                }
-//            }
-//    }
-//    
-//    func fetchImage(from url: String, completion: @escaping(Result<Data, AFError>) -> Void) {
-//            AF.request(url)
-//                .responseData { response in
-//                    switch response.result {
-//                    case .success(let imageData):
-//                        completion(.success(imageData))
-//                    case .failure(let error):
-//                        completion(.failure(error))
-//                    }
-//                }
-//        }
+    func fetchEpisode(url: String, completion: @escaping(Result<Episode, AFError>) -> Void) {
+        AF.request(url, method: .get)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let episodes = Episode.getEpisode(from: value)
+                    completion(.success(episodes))
+                    print(episodes)
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func fetchImage(from url: String, completion: @escaping(Result<Data, AFError>) -> Void) {
+            AF.request(url)
+                .responseData { response in
+                    switch response.result {
+                    case .success(let imageData):
+                        completion(.success(imageData))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+        }
     
 }
             
