@@ -23,7 +23,6 @@ struct Character: Decodable {
         location = LastLocation(value: locationDict ?? [:])
         image = value["image"] as? String ?? ""
         episode = value["episode"] as? [String] ?? []
-        
     }
     
     static func getCharacters(from value: Any) -> [Character] {
@@ -55,10 +54,10 @@ struct Episode: Decodable {
         name = value["name"] as? String ?? ""
     }
     
-    static func getEpisode(from value: Any) -> String {
-        guard let value = value as? [String: Any] else { return ""}
-        let episodes = Episode(value: value)
-    
+    static func getEpisode(from value: Any) -> Episode? {
+        guard let value = value as? [String: Any] else { return nil}
+        let episode = Episode(value: value)
+        return episode
         }
     }
 

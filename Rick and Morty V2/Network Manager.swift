@@ -37,9 +37,8 @@ class NetworkManager {
             .responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    let episodes = Episode.getEpisode(from: value)
-                    completion(.success(episodes))
-                    print(episodes)
+                    let episode = Episode.getEpisode(from: value)
+                    completion(.success(episode))
                 case .failure(let error):
                     completion(.failure(error))
                 }
